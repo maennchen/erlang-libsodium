@@ -11,12 +11,16 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - erlang: 25.0.4-alpine-3.16.1
-          # - erlang: 24.3.4.4-alpine-3.16.1 # appears to have a broken 'ssl' library
-          - erlang: 23.3.4.16-alpine-3.16.0
+          - erlang: 29.0.3-alpine-3.24.1
+          - erlang: 28.5.0.3-alpine-3.24.1
+          - erlang: 27.3.4.14-alpine-3.24.1
+          - erlang: 26.2.5.21-alpine-3.24.1
+          - erlang: 25.3.2.21-alpine-3.22.5
+          - erlang: 24.3.4.17-alpine-3.22.5
+          - erlang: 23.3.4.20-alpine-3.16.9
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v7
 
       - name: Setup
         run: |
@@ -27,7 +31,7 @@ jobs:
           make docker-test DOCKER_OTP_VERSION=${{matrix.erlang}}
 
       - name: Logs
-        uses: actions/upload-artifact@v2-preview
+        uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: ct-logs-${{matrix.erlang}}
