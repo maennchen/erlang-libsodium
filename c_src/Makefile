@@ -192,7 +192,7 @@ $(LIBSODIUM_CONFIGURE_FILE): $(LIBSODIUM_SRC_DIR)
 	$(verbose) if [ ! -f $(LIBSODIUM_CONFIGURE_FILE) ]; then \
 		(cd $(LIBSODIUM_SRC_DIR) \
 			&& chmod +x $(LIBSODIUM_AUTOGEN_FILE) \
-			&& $(LIBSODIUM_AUTOGEN_FILE)); \
+			&& DO_NOT_UPDATE_CONFIG_SCRIPTS=1 $(LIBSODIUM_AUTOGEN_FILE)); \
 	else \
 		true; \
 	fi
