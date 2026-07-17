@@ -11,7 +11,7 @@
 static void
 libsodium_drv_misuse_handler(void)
 {
-    erts_fprintf(stderr, "FATAL ERROR: sodium_misuse() called\n");
+    fprintf(stderr, "FATAL ERROR: sodium_misuse() called\n");
     return;
 }
 

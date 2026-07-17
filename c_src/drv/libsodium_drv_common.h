@@ -13,8 +13,6 @@
 #include <stdio.h>
 #include <sodium.h>
 
-extern int erts_fprintf(FILE *, const char *, ...);
-
 // #define TRACE	1
 #ifdef TRACE
 #define TRACE_C(c)                                                                                                                 \
@@ -27,7 +25,7 @@ extern int erts_fprintf(FILE *, const char *, ...);
         fputs((s), stdout);                                                                                                        \
         fflush(stdout);                                                                                                            \
     } while (0)
-#define TRACE_F(...) erts_fprintf(stderr, __VA_ARGS__)
+#define TRACE_F(...) fprintf(stderr, __VA_ARGS__)
 #else
 #define TRACE_C(c) ((void)(0))
 #define TRACE_S(s) ((void)(0))
